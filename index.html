@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4Real — Car Inspections</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">4<span>Real</span></div>
+  <div class="nav-links">
+    <a class="active" onclick="switchTab('home', this)">Home</a>
+    <a onclick="switchTab('booking', this)">Book Inspection</a>
+    <a onclick="switchTab('dashboard', this)">Dashboard</a>
+  </div>
+  <button class="btn-nav" onclick="switchTab('booking', null)">Book Now</button>
+</nav>
+
+<!-- HOME -->
+<div id="tab-home" class="tab-content active">
+  <div class="hero">
+    <div>
+      <h1>Car inspections, <span>4Real.</span></h1>
+      <p>Professional pre-purchase inspections and garage services — booked online in minutes. No more WhatsApp back and forth.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="switchTab('booking', null)">Book an Inspection</button>
+        <button class="btn-outline" onclick="switchTab('dashboard', null)">View Dashboard</button>
+      </div>
+    </div>
+    <div class="car-visual">
+      <div class="car-icon">🚗</div>
+      <div class="car-name">4<span>Real</span></div>
+      <div class="car-badge">CERTIFIED INSPECTOR</div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-card"><div class="num">247</div><div class="label">Inspections done</div></div>
+    <div class="stat-card"><div class="num">4.9★</div><div class="label">Average rating</div></div>
+    <div class="stat-card"><div class="num">48h</div><div class="label">Avg turnaround</div></div>
+  </div>
+</div>
+
+<!-- BOOKING -->
+<div id="tab-booking" class="tab-content">
+  <div class="booking-wrap">
+    <h2>Book an inspection</h2>
+    <p>Fill in the details below and 4Real will confirm your slot within 2 hours.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Full name</label><input type="text" placeholder="Jane Mwangi"></div>
+      <div class="form-group"><label>Phone number</label><input type="text" placeholder="+254 7XX XXX XXX"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Car make</label><input type="text" placeholder="Toyota"></div>
+      <div class="form-group"><label>Car model</label><input type="text" placeholder="Fielder 2019"></div>
+    </div>
+    <div class="form-group">
+      <label>Service type</label>
+      <select>
+        <option>Pre-purchase inspection</option>
+        <option>Garage service</option>
+        <option>Diagnostic check</option>
+        <option>Full inspection + report</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Preferred date</label><input type="date"></div>
+      <div class="form-group"><label>Preferred time</label><input type="time"></div>
+    </div>
+    <div class="form-group">
+      <label>Location / notes</label>
+      <textarea rows="3" placeholder="Where is the car? Any specific concerns?"></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitBooking()">Submit Booking Request</button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="tab-dashboard" class="tab-content">
+  <div class="dashboard-wrap">
+    <div class="dash-header">
+      <h2>4Real Dashboard</h2>
+      <span class="dash-date">May 2026</span>
+    </div>
+    <div class="dash-stats">
+      <div class="ds-card"><div class="val green">12</div><div class="lbl">This week</div></div>
+      <div class="ds-card"><div class="val orange">5</div><div class="lbl">Pending</div></div>
+      <div class="ds-card"><div class="val">3</div><div class="lbl">Today</div></div>
+      <div class="ds-card"><div class="val green">KES 84k</div><div class="lbl">This month</div></div>
+    </div>
+    <div class="jobs-list">
+      <div class="job-card">
+        <div class="job-left">
+          <div class="job-avatar">JM</div>
+          <div class="job-info"><div class="name">Jane Mwangi</div><div class="car">Toyota Fielder • Pre-purchase • May 9</div></div>
+        </div>
+        <span class="badge pending">Pending</span>
+      </div>
+      <div class="job-card">
+        <div class="job-left">
+          <div class="job-avatar">BK</div>
+          <div class="job-info"><div class="name">Brian Kamau</div><div class="car">Mazda Demio • Diagnostic • May 9</div></div>
+        </div>
+        <span class="badge confirmed">Confirmed</span>
+      </div>
+      <div class="job-card">
+        <div class="job-left">
+          <div class="job-avatar">AO</div>
+          <div class="job-info"><div class="name">Amina Osei</div><div class="car">Honda Fit • Full Inspection • May 8</div></div>
+        </div>
+        <span class="badge done">Done</span>
+      </div>
+      <div class="job-card">
+        <div class="job-left">
+          <div class="job-avatar">SK</div>
+          <div class="job-info"><div class="name">Samuel Kirui</div><div class="car">Subaru Forester • Pre-purchase • May 8</div></div>
+        </div>
+        <span class="badge done">Done</span>
+      </div>
+      <div class="job-card">
+        <div class="job-left">
+          <div class="job-avatar">FN</div>
+          <div class="job-info"><div class="name">Fatuma Njoki</div><div class="car">VW Polo • Garage service • May 10</div></div>
+        </div>
+        <span class="badge pending">Pending</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="success-toast" id="toast">✓ Booking submitted! 4Real will confirm within 2 hours.</div>
+
+<script src="app.js"></script>
+</body>
+</html>
